@@ -3,6 +3,7 @@ import { signUp } from '../../utilities/users-service';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
+import Oauth from '../Oauth/Oauth'
 
 export default class SignUpForm extends Component {
   // class field syntax
@@ -46,6 +47,8 @@ export default class SignUpForm extends Component {
   render() {
     const disable = this.state.password !== this.state.confirm;
     return (
+      <>
+      <Oauth/>
       <Grid item xs={12}>
       <form onSubmit={this.handleSubmit} autoComplete="off" >
         <TextField
@@ -58,6 +61,7 @@ export default class SignUpForm extends Component {
           required={true}
           fullWidth={true}
           margin="normal"
+          style={{ background: 'white' }}
         />
         <TextField
           id="outlined-name"
@@ -69,6 +73,7 @@ export default class SignUpForm extends Component {
           required={true}
           fullWidth={true}
           margin="normal"
+          style={{ background: 'white' }}
           />
         <TextField
           id="outlined-name"
@@ -80,6 +85,7 @@ export default class SignUpForm extends Component {
           required={true}
           fullWidth={true}
           margin="normal"
+          style={{ background: 'white' }}
         />
         <TextField
           id="outlined-name"
@@ -91,11 +97,13 @@ export default class SignUpForm extends Component {
           required={true}
           fullWidth={true}
           margin="normal"
+          style={{ background: 'white' }}
         />
-        <Button type='submit' disabled={disable} variant="contained">SIGN UP</Button>
+        <Button type='submit' disabled={disable} fullWidth={true} variant="contained">SIGN UP</Button>
         <p>{this.state.error}</p>
       </form>
       </Grid>
+      </>
  
     );
   }

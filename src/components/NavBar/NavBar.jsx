@@ -131,13 +131,13 @@ export default function NavBar({ user, hide, setUser, setData, checked, handleCh
         }
       </AccordionSummary>
       <Accordion sx={{ background: handleStyle }}>
-        <AccordionDetails>
-          <ButtonGroup fullWidth={true} variant="contained" aria-label="outlined primary button group">
+        <AccordionDetails  sx={{ width: {md: "50%", sm: "100%"}, margin: "auto"}}>
             <Grid
               container
               rowSpacing={1}
               columnSpacing={{ xs: 1, sm: 1, md: 1 }}
               alignItems="center"
+    
             >
               {user ?
                 <>
@@ -149,7 +149,6 @@ export default function NavBar({ user, hide, setUser, setData, checked, handleCh
                 </>
               }
             </Grid>
-          </ButtonGroup>
         </AccordionDetails>
       </Accordion>
     </Accordion>
