@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { signUp } from '../../utilities/users-service';
+import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 export default class SignUpForm extends Component {
   // class field syntax
@@ -43,22 +46,57 @@ export default class SignUpForm extends Component {
   render() {
     const disable = this.state.password !== this.state.confirm;
     return (
-      <div>
-        <div className="form-container">
-          <form autoComplete="off" onSubmit={this.handleSubmit}>
-            <label>Name</label>
-            <input type="text" name="name" value={this.state.name} onChange={this.handleChange} required />
-            <label>Email</label>
-            <input type="email" name="email" value={this.state.email} onChange={this.handleChange} required />
-            <label>Password</label>
-            <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required />
-            <label>Confirm</label>
-            <input type="password" name="confirm" value={this.state.confirm} onChange={this.handleChange} required />
-            <button type="submit" disabled={disable}>SIGN UP</button>
-          </form>
-        </div>
-        <p className="error-message">&nbsp;{this.state.error}</p>
-      </div>
+      <Grid item xs={12}>
+      <form onSubmit={this.handleSubmit} autoComplete="off" >
+        <TextField
+          id="outlined-name"
+          label="Name"
+          type="text" 
+          name="name" 
+          value={this.state.name} 
+          onChange={this.handleChange}
+          required={true}
+          fullWidth={true}
+          margin="normal"
+        />
+        <TextField
+          id="outlined-name"
+          label="Email"
+          type="email"
+          name="email"
+          value={this.state.email} 
+          onChange={this.handleChange}
+          required={true}
+          fullWidth={true}
+          margin="normal"
+          />
+        <TextField
+          id="outlined-name"
+          label="Password"
+          type="password" 
+          name="password" 
+          value={this.state.password}
+          onChange={this.handleChange} 
+          required={true}
+          fullWidth={true}
+          margin="normal"
+        />
+        <TextField
+          id="outlined-name"
+          label="Confirm Password"
+          type="password" 
+          name="confirm" 
+          value={this.state.confirm}
+          onChange={this.handleChange} 
+          required={true}
+          fullWidth={true}
+          margin="normal"
+        />
+        <Button type='submit' disabled={disable} variant="contained">SIGN UP</Button>
+        <p>{this.state.error}</p>
+      </form>
+      </Grid>
+ 
     );
   }
 }
