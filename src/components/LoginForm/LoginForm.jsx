@@ -31,8 +31,8 @@ export default function LoginForm({ setUser }) {
 
   return (
     <>
-      <Oauth/>
       <Grid item xs={12} >
+      <Oauth/>
         <form onSubmit={handleSubmit} autoComplete="off">
           <TextField
             id="outlined-name"
@@ -43,7 +43,7 @@ export default function LoginForm({ setUser }) {
             onChange={handleChange}
             required={true}
             fullWidth={true}
-            margin="normal"
+         
             style={{ background: 'white' }}
           />
           <TextField
@@ -55,7 +55,7 @@ export default function LoginForm({ setUser }) {
             onChange={handleChange}
             required={true}
             fullWidth={true}
-            margin="normal"
+           
             style={{ background: 'white' }}
 
           />
