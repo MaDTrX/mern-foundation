@@ -1,8 +1,6 @@
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
+
 import * as React from 'react'
 import Button from '@mui/material/Button';
-import ButtonGroup from '@mui/material/ButtonGroup';
 import Grid from '@mui/material/Grid';
 import * as userService from '../../utilities/users-service';
 import Accordion from '@mui/material/Accordion';
@@ -10,7 +8,6 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Switch from '@mui/material/Switch';
-
 import SignUpForm from "../../components/SignUpForm/SignUpForm"
 import LoginForm from "../../components/LoginForm/LoginForm"
 
@@ -24,7 +21,7 @@ export default function NavBar({ user, hide, setUser, setData, checked, handleCh
 //   const accordionNav = accordion.map(el => <Grid item xs={12} md={12} lg={6}><Button onClick={handleNav} value={el} fullWidth={true}>{el}</Button></Grid>)
 
   React.useEffect(() => {
-    if (!hide) setNavState(false)
+    if (hide === undefined) setNavState(false)
   }, [hide])
 
   function handleCred(evt) {
@@ -37,10 +34,10 @@ export default function NavBar({ user, hide, setUser, setData, checked, handleCh
 
   function handleStyle() {
     if (checked) {
-      return 'rgb(57, 62, 70)'
+      return 'rgb(0, 0, 0, 0)'
     }
     else {
-      return 'rgb(232, 240, 242)'
+      return 'rgba(0, 0, 0, 0)'
     }
   }
 
@@ -48,15 +45,8 @@ export default function NavBar({ user, hide, setUser, setData, checked, handleCh
     userService.logOut();
     setUser(null);
   }
-  async function handleSearch(evt){
-    evt.preventDefault()
-      }
 
 
-
-  // async function handleNav(evt) {
-
-  // }
 
 
   function handleAccordion(evt) {
@@ -73,13 +63,10 @@ export default function NavBar({ user, hide, setUser, setData, checked, handleCh
     } else if (evt.target.value === 'logIn' || evt.target.value === 'signUp') {
       setNavState(true)
     }
-    //  else if (evt.target.value === 'home' ) {
-    //   home(!home)
-    // }
   }
 
   return (
-    <Accordion sx={{ background: handleStyle, position: 'fixed', top: '0', width: '100%', zIndex: 3 }} expanded={navState} onClick={handleAccordion}>
+    <Accordion sx={{ background: handleStyle, width: '100%', position: 'absolute', top: '0', boxShadow:'none'}} expanded={navState} onClick={handleAccordion}>
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1a-content"
@@ -95,14 +82,10 @@ export default function NavBar({ user, hide, setUser, setData, checked, handleCh
                   inputProps={{ 'aria-label': 'controlled' }}
                 />
                 <Button onClick={handleAccordion} variant="text" value="home"></Button>
-                {/* <Autocomplete
-                  disablePortal
-                  id="combo-box-demo"
-                  options={schools}
-                  size='small'
-                  sx={{ width: 300}}
-                  renderInput={(params) =><form style={{display: "flex"}} onSubmit={handleSearch} autoComplete="off" > <TextField {...params} label="Search Schools" /> <button type='submit'>Go</button></form>}
-                /> */}
+                <Button onClick={handleCred} sx={{ color: 'black',  letterSpacing: '2px', fontWeight: '700', fontSize: '16px' }} variant="text" value="signUp">FLIGHTS</Button>
+            <Button onClick={handleCred} sx={{ color: 'black',  letterSpacing: '2px', fontWeight: '700', fontSize: '16px' }}  variant="text" value="logIn">HOTEL</Button>
+            <Button onClick={handleCred} sx={{ color: 'black',  letterSpacing: '2px', fontWeight: '700', fontSize: '16px' }}  variant="text" value="logIn">TOURS</Button>
+        
               </Grid>
               <Grid
                 item xs={6}
@@ -112,7 +95,7 @@ export default function NavBar({ user, hide, setUser, setData, checked, handleCh
                 alignItems="center"
               >
         
-                <Button onClick={handleLogOut} variant="text" value="account">LOGOUT</Button>
+                <Button onClick={handleLogOut}  sx={{ color: 'black',  letterSpacing: '2px', fontWeight: '700', fontSize: '16px' }}  variant="text" value="account">LOGOUT</Button>
 
               </Grid>
             </Grid>
@@ -124,20 +107,20 @@ export default function NavBar({ user, hide, setUser, setData, checked, handleCh
               onChange={handleChange}
               inputProps={{ 'aria-label': 'controlled' }}
             />
-            <Button onClick={handleCred} variant="text" value="signUp">SIGN UP</Button>
-            <Button onClick={handleCred} variant="text" value="logIn">LOG IN</Button>
+            <Button onClick={handleCred} sx={{ color: 'black',  letterSpacing: '2px', fontWeight: '700', fontSize: '16px' }} variant="text" value="signUp">SIGN UP</Button>
+            <Button onClick={handleCred} sx={{ color: 'black',  letterSpacing: '2px', fontWeight: '700', fontSize: '16px' }}  variant="text" value="logIn">LOG IN</Button>
 
           </>
         }
       </AccordionSummary>
       <Accordion sx={{ background: handleStyle }}>
-        <AccordionDetails>
-          <ButtonGroup fullWidth={true} variant="contained" aria-label="outlined primary button group">
+        <AccordionDetails  sx={{ width: {md: "50%", sm: "100%"}, margin: "auto"}}>
             <Grid
               container
               rowSpacing={1}
               columnSpacing={{ xs: 1, sm: 1, md: 1 }}
               alignItems="center"
+    
             >
               {user ?
                 <>
@@ -149,7 +132,6 @@ export default function NavBar({ user, hide, setUser, setData, checked, handleCh
                 </>
               }
             </Grid>
-          </ButtonGroup>
         </AccordionDetails>
       </Accordion>
     </Accordion>

@@ -46,23 +46,6 @@ router.get(
   })
 );
 
-router.get("/twitter", passport.authenticate("twitter", { scope: ["profile"] }));
 
-router.get(
-  "/twitter/callback",
-  passport.authenticate("twitter", {
-    successRedirect: CLIENT_URL,
-    failureRedirect: "/login/failed",
-  })
-);
-router.get("/facebook", passport.authenticate("facebook", { scope: ["profile"] }));
-
-router.get(
-  "/facebook/callback",
-  passport.authenticate("twitter", {
-    successRedirect: CLIENT_URL,
-    failureRedirect: "/login/failed",
-  })
-);
 
 module.exports = router

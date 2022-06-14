@@ -31,9 +31,9 @@ export default function LoginForm({ setUser }) {
 
   return (
     <>
-      <Grid item xs={12}>
+      <Grid item xs={12} >
       <Oauth/>
-        <form onSubmit={handleSubmit} autoComplete="off" >
+        <form onSubmit={handleSubmit} autoComplete="off">
           <TextField
             id="outlined-name"
             label="Email"
@@ -43,8 +43,8 @@ export default function LoginForm({ setUser }) {
             onChange={handleChange}
             required={true}
             fullWidth={true}
-            margin="normal"
-            style={{ background: 'rgba(146, 154, 171, 0.5)' }}
+         
+            style={{ background: 'white' }}
           />
           <TextField
             id="outlined-name"
@@ -55,11 +55,11 @@ export default function LoginForm({ setUser }) {
             onChange={handleChange}
             required={true}
             fullWidth={true}
-            margin="normal"
-            style={{ background: 'rgba(146, 154, 171, 0.5)' }}
+           
+            style={{ background: 'white' }}
 
           />
-          <Button type='submit' variant="contained">LOGIN</Button>
+          <Button type='submit' variant="contained" fullWidth={true}>LOGIN</Button>
         </form>
         <p>{error}</p>
       </Grid>
